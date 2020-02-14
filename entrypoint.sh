@@ -7,12 +7,12 @@ fi
 UART_GROUP=$(grep -Po "^\\w+(?=:x:${UART_GROUP_ID}:)" /etc/group)
 
 if [[ -n "$USER_ID" ]]; then
-  useradd -m -s /bin/bash -u "$USER_ID" -o -d "$PWD" user
+  useradd -m -s /bin/bash -u "$USER_ID" -o -d /home/user user
   usermod -aG sudo user
   usermod -aG "$UART_GROUP" user
   chown user $(tty)
   echo 'source /tools/Xilinx/Vivado/2019.2/settings64.sh' > /home/user/.bash_profile
-  chown /home/user/.bash_profile
+  chown user /home/user/.bash_profile
   exec /usr/local/bin/gosu user "$@"
 else
   exec "$@"
