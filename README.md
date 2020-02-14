@@ -19,7 +19,7 @@ xhost + 127.0.0.1
 をしてから
 
 ```bash
-docker run -e DISPLAY=docker.for.mac.localhost:0 -e USER_ID=$UID -it --rm -v $PWD:/home/user/work laysakura/ubuntu-vivado
+docker run -e DISPLAY=docker.for.mac.localhost:0 -e USER_ID=$UID -it --rm -v $PWD:/home/user/work -w /home/user laysakura/ubuntu-vivado
 ```
 
 すること。
